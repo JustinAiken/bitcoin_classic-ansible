@@ -3,5 +3,7 @@
   "bitcoin_dir": "/etc/bitcoin",
   "classic_version": "0.12.0",
   "rpc_user": "btc_classic",
-  "rpc_pass": "Boo Blockstream!"
+  "rpc_pass": "Boo Blockstream!",
+  "prune_only": false,
+  "prune_amt": 550
 }

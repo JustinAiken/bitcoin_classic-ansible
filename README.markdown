@@ -14,9 +14,18 @@ I've tested and am running this on a [Linode 4096](https://www.linode.com/?r=79c
 
 - 1. Add the IP of the VPS to your ssh config and hosts file as `mybtcnode`
 - 2. `ssh-copy-id root@mybtcnode`
-- 3. Install Ansible 2.0+
-- 4. `cp config.sample.json config.json`
-- 5. Edit `config.json` to taste
+- 3. `cp config.sample.json config.json`
+- 4. Edit `config.json` to taste
+
+### Config Variables
+
+- `hostname` - What to set the hostname as
+- `bitcoin_dir` - Directory to install inside
+- `classic_version` - Which version to use
+- `rpc_user` - Username
+- `rpc_pass` - Password
+- `prune_only` - Set to `true` to run in pruned mode, `false` otherwise
+- `prune_amt` - Prune setting; ignored unless ^^ is `true`.
 
 ### Go!
 
