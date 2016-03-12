@@ -1,0 +1,5 @@
+- name: Set Hostname
+  hostname: name={{ hostname }}
+
+- name: Build hosts file (backups will be made)
+  lineinfile: dest=/etc/hosts line='127.0.0.1 {{ hostname }}' state=present backup=yes

@@ -1,0 +1,7 @@
+{
+  "hostname": "mybtcnode",
+  "bitcoin_dir": "/etc/bitcoin",
+  "classic_version": "0.12.0",
+  "rpc_user": "btc_classic",
+  "rpc_pass": "Boo Blockstream!"
+}

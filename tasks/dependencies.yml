@@ -1,0 +1,23 @@
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: apt upgrade
+  apt: upgrade=yes
+
+- name: Install dependencies
+  apt:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    - build-essential
+    - python-software-properties
+    - wget
+    - libtool
+    - autotools-dev
+    - autoconf
+    - autoconf
+    - libssl-dev
+    - libboost-all-dev
+    - libdb5.1-dev
+    - libdb5.1++-dev
+    - pkg-config

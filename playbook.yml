@@ -1,0 +1,15 @@
+- name: Bitcoin node!!
+  gather_facts: no
+  hosts: all
+
+  tasks:
+    - include: tasks/dependencies.yml
+      tags: dependencies
+    - include: tasks/hostname.yml
+      tags: hostname
+    - include: tasks/security.yml
+      tags: security
+    - include: tasks/bitcoin_classic.yml
+      tags: bitcoin_classic
+    - include: tasks/get_info.yml
+      tags: get_info

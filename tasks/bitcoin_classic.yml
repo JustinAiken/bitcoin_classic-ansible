@@ -1,0 +1,37 @@
+- name: Create Bitcoin directory
+  file:
+    path: "{{ bitcoin_dir }}"
+    state: directory
+
+- name: Create Bitcoin Data directory
+  file:
+    path: "{{ bitcoin_dir }}/data"
+    state: directory
+
+- name: Download Bitcoin Classic tarball
+  get_url:
+    url: "https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v{{ classic_version }}cl1/bitcoin-{{ classic_version }}-linux64.tar.gz"
+    dest: "/usr/local/src/bitcoin-{{ classic_version }}-linux64.tar.gz"
+
+- name: Unarchive Bitcoin Classic
+  unarchive:
+    src:  "/usr/local/src/bitcoin-{{ classic_version }}-linux64.tar.gz"
+    dest: "{{ bitcoin_dir }}/"
+    copy: no
+    creates: "{{bitcoin_dir}}/bitcoin-{{classic_version}}/bin/bitcoind"
+
+- name: Install bitcoin.conf
+  template:
+    src:  'templates/bitcoin.conf'
+    dest: "{{ bitcoin_dir }}/bitcoin.conf"
+
+- name: Install bitcoind service
+  template:
+    src:  'templates/bitcoind.conf'
+    dest: '/etc/init/bitcoind.conf'
+
+- name: Ensure bitcoind is running
+  service:
+    name: bitcoind
+    state: running
+    enabled: yes

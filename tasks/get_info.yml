@@ -1,0 +1,6 @@
+- name: Get info
+  command: "{{ bitcoin_dir }}/bitcoin-{{ classic_version}}/bin/bitcoin-cli -conf={{ bitcoin_dir }}/bitcoin.conf getinfo"
+  register: info_output
+
+- name: Display info
+  debug: msg="{{ info_output.stdout }}"
